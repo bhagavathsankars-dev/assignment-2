@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drawing App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <div class="toolbar">
+    <div class="tool-group">
+      <button class="tool active" id="brush">Brush</button>
+      <button class="tool" id="rectangle">Rectangle</button>
+      <button class="tool" id="circle">Circle</button>
+      <button class="tool" id="triangle">Triangle</button>
+      <button class="tool" id="square">Square</button>
+      <button class="tool" id="line">Line</button>
+      <button class="tool" id="eraser">Eraser</button>
+    </div>
+
+    
+    <div class="tool-group">
+      <label>Color</label>
+      <input type="color" id="colorPicker" value="#000000">
+      <label>Size</label>
+      <input type="range" id="brushSize" min="1" max="50" value="5">
+    </div>
+
+    <div class="tool-group">
+      <button id="addImage"> Add Image</button>
+      <button id="clearCanvas"> Clear</button>
+      <button id="darkToggle"> Dark Mode</button>
+    </div>
+  </div>
+
+  <div class="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
