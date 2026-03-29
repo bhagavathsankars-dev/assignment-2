@@ -7,8 +7,6 @@ let currentTool = 'brush';
 let isDrawing = false;
 let startX = 0, startY = 0;
 let snapshot = null;
- 
-// --- Eraser cursor overlay ---
 const eraserCursor = document.createElement('div');
 eraserCursor.id = 'eraserCursor';
 document.body.appendChild(eraserCursor);
@@ -37,7 +35,6 @@ toolButtons.forEach(btn => {
     toolButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentTool = btn.id;
-    // Show/hide eraser cursor overlay
     eraserCursor.style.display = currentTool === 'eraser' ? 'block' : 'none';
     canvas.style.cursor = currentTool === 'eraser' ? 'none' : 'crosshair';
   });
@@ -51,7 +48,6 @@ function getPos(e) {
   };
 }
  
-// Move eraser cursor with mouse
 canvas.addEventListener('mousemove', e => {
   if (currentTool === 'eraser') {
     const size = parseInt(brushSizeInput.value);
@@ -68,14 +64,12 @@ canvas.addEventListener('mouseenter', () => {
   if (currentTool === 'eraser') eraserCursor.style.display = 'block';
 });
  
-// ---- Image placement via drawn rect ----
+
 let imageRectMode = false;
 let imageSnapshot = null;
  
 document.getElementById('addImage').addEventListener('click', () => {
-  // Activate rect-drawing mode for image placement
   imageRectMode = true;
-  // Temporarily switch visual cue
   canvas.style.cursor = 'crosshair';
   canvas.title = 'Draw a rectangle to place the image';
 });
@@ -90,7 +84,6 @@ function drawImagePreviewRect(x1, y1, x2, y2) {
   ctx.restore();
 }
  
-// ---- Main canvas events ----
 canvas.addEventListener('mousedown', e => {
   const pos = getPos(e);
   startX = pos.x;
@@ -118,8 +111,7 @@ canvas.addEventListener('mousemove', e => {
     drawImagePreviewRect(startX, startY, x, y);
     return;
   }
- 
-  // FIX: eraser uses destination-out compositing — works in both light and dark mode
+
   if (currentTool === 'eraser') {
     ctx.globalCompositeOperation = 'destination-out';
     ctx.strokeStyle = 'rgba(0,0,0,1)';
@@ -179,6 +171,7 @@ canvas.addEventListener('mousemove', e => {
       ctx.stroke();
       break;
   }
+ 
 });
  
 canvas.addEventListener('mouseup', e => {
@@ -192,10 +185,8 @@ canvas.addEventListener('mouseup', e => {
     if (w > 10 && h > 10) {
       const img = new Image();
       img.crossOrigin = 'anonymous';
-      // Request picsum at the drawn rect size
       img.src = `https://picsum.photos/${Math.round(w)}/${Math.round(h)}?random=${Math.random()}`;
       img.onload = () => {
-        // Restore canvas without the preview rect, then draw image
         ctx.putImageData(imageSnapshot, 0, 0);
         ctx.globalCompositeOperation = 'source-over';
         ctx.drawImage(img, left, top, w, h);
@@ -213,7 +204,6 @@ canvas.addEventListener('mouseup', e => {
   }
  
   isDrawing = false;
-  // Reset composite operation after eraser use
   ctx.globalCompositeOperation = 'source-over';
   localStorage.setItem('canvas', canvas.toDataURL());
 });
