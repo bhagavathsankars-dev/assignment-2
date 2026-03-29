@@ -100,7 +100,7 @@ canvas {
   display: block;
 }
  
-/* ---- Eraser custom cursor overlay ---- */
+
 #eraserCursor {
   display: none;
   position: fixed;
@@ -113,8 +113,7 @@ canvas {
   z-index: 9999;
   transition: width 0.05s, height 0.05s;
 }
- 
-/* Dark mode */
+
 [data-theme="dark"] body,
 [data-theme="dark"] {
   background: #1a1a1a;
