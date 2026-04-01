@@ -143,17 +143,17 @@ canvas.addEventListener('mousemove', e => {
       ctx.strokeRect(startX, startY, side * signX, side * signY);
       break;
     }
-case 'circle': {
-  ctx.putImageData(snapshot, 0, 0);
-  const rx = (x - startX) / 2;
-  const ry = (y - startY) / 2;
-  const cx = startX + rx;
-  const cy = startY + ry;
-  const radius = Math.sqrt(rx * rx + ry * ry);
-  ctx.beginPath();
-  ctx.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, 0, Math.PI * 2);
-  ctx.stroke();
-  break;
+    case 'circle': {
+      ctx.putImageData(snapshot, 0, 0);
+      const rx = (x - startX) / 2;
+      const ry = (y - startY) / 2;
+      const cx = startX + rx;
+      const cy = startY + ry;
+      const radius = Math.sqrt(rx * rx + ry * ry);
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, 0, Math.PI * 2);
+      ctx.stroke();
+      break;
 }
  
     case 'triangle':
