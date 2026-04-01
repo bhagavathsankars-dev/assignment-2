@@ -38,13 +38,14 @@ label {
   letter-spacing: 0.05em;
 }
 .tool {
-  padding: 8px 12px;
+  padding: 8px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background: white;
   cursor: pointer;
-  font-size: 13px;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.15s ease, background 0.2s ease;
 }
 .tool:hover {
@@ -71,14 +72,17 @@ input[type="range"] {
   cursor: pointer;
 }
 button:not(.tool) {
-  padding: 8px 12px;
+  padding: 8px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background: white;
   cursor: pointer;
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.15s ease, background 0.2s ease;
 }
+
 button:not(.tool):hover {
   background: #f5f5f5;
   transform: scale(1.03);
@@ -156,4 +160,18 @@ canvas {
   border-color: #7baaf7;
   background: rgba(123, 170, 247, 0.08);
   box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
+}
+.tool svg, button:not(.tool) svg {
+  width: 18px;
+  height: 18px;
+  stroke: #333;
+}
+
+[data-theme="dark"] .tool svg,
+[data-theme="dark"] button:not(.tool) svg {
+  stroke: #eee;
+}
+
+[data-theme="dark"] .tool.active svg {
+  stroke: #7baaf7;
 }
