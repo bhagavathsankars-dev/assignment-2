@@ -4,19 +4,20 @@
   <meta charset="UTF-8">
   <title>Drawing App</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 <div class="app">
 
   <div class="toolbar">
     <div class="tool-group">
-      <button class="tool active" id="brush">Brush</button>
-      <button class="tool" id="rectangle">Rectangle</button>
-      <button class="tool" id="circle">Circle</button>
-      <button class="tool" id="triangle">Triangle</button>
-      <button class="tool" id="square">Square</button>
-      <button class="tool" id="line">Line</button>
-      <button class="tool" id="eraser">Eraser</button>
+      <button class="tool active" id="brush"><i data-lucide="pencil"></i></button>
+      <button class="tool" id="rectangle"><i data-lucide="rectangle-horizontal"></i></button>
+      <button class="tool" id="circle"><i data-lucide="circle"></i></button>
+      <button class="tool" id="triangle"><i data-lucide="triangle"></i></button>
+      <button class="tool" id="square"><i data-lucide="square"></i></button>
+      <button class="tool" id="line"><i data-lucide="minus"></i></button>
+      <button class="tool" id="eraser"><i data-lucide="eraser"></i></button>
     </div>
 
     
@@ -28,9 +29,9 @@
     </div>
 
     <div class="tool-group">
-      <button id="addImage"> Add Image</button>
-      <button id="clearCanvas"> Clear</button>
-      <button id="darkToggle"> Dark Mode</button>
+      <button id="addImage"><i data-lucide="image-plus"></i></button>
+      <button id="clearCanvas"><i data-lucide="trash-2"></i></button>
+      <button id="darkToggle"><i data-lucide="moon"></i></button>
     </div>
   </div>
 
@@ -40,5 +41,6 @@
 
 </div>
 <script src="script.js"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
