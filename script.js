@@ -120,8 +120,8 @@ canvas.addEventListener('mousemove', e => {
     ctx.strokeStyle = color;
   }
   ctx.lineWidth = size;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
+  ctx.lineCap = (currentTool === 'brush' || currentTool === 'eraser') ? 'round' : 'butt';
+  ctx.lineJoin = (currentTool === 'brush' || currentTool === 'eraser') ? 'round' : 'miter';
  
   switch (currentTool) {
     case 'brush':
@@ -143,15 +143,18 @@ canvas.addEventListener('mousemove', e => {
       ctx.strokeRect(startX, startY, side * signX, side * signY);
       break;
     }
- 
-    case 'circle': {
-      ctx.putImageData(snapshot, 0, 0);
-      const radius = Math.sqrt((x - startX) ** 2 + (y - startY) ** 2);
-      ctx.beginPath();
-      ctx.arc(startX, startY, radius, 0, Math.PI * 2);
-      ctx.stroke();
-      break;
-    }
+case 'circle': {
+  ctx.putImageData(snapshot, 0, 0);
+  const rx = (x - startX) / 2;
+  const ry = (y - startY) / 2;
+  const cx = startX + rx;
+  const cy = startY + ry;
+  const radius = Math.sqrt(rx * rx + ry * ry);
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, Math.abs(rx), Math.abs(ry), 0, 0, Math.PI * 2);
+  ctx.stroke();
+  break;
+}
  
     case 'triangle':
       ctx.putImageData(snapshot, 0, 0);
