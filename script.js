@@ -218,7 +218,9 @@ document.getElementById('clearCanvas').addEventListener('click', () => {
 });
  
 document.getElementById('darkToggle').addEventListener('click', () => {
-  document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+  const isDark = document.body.dataset.theme === 'dark';
+  document.body.dataset.theme = isDark ? '' : 'dark';
+  document.getElementById('darkToggle').textContent = isDark ? 'Dark Mode' : 'Light Mode';
 });
  
 window.addEventListener('load', () => {
