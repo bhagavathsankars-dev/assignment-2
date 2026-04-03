@@ -224,7 +224,7 @@ document.getElementById('darkToggle').addEventListener('click', () => {
   const isDark = document.body.dataset.theme === 'dark';
   document.body.dataset.theme = isDark ? '' : 'dark';
   const icon = document.querySelector('#darkToggle i');
-  icon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
+  icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
   lucide.createIcons();
 });
  
