@@ -223,8 +223,8 @@ document.getElementById('clearCanvas').addEventListener('click', () => {
 document.getElementById('darkToggle').addEventListener('click', () => {
   const isDark = document.body.dataset.theme === 'dark';
   document.body.dataset.theme = isDark ? '' : 'dark';
-  const icon = document.querySelector('#darkToggle i');
-  icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+  const btn = document.getElementById('darkToggle');
+  btn.innerHTML = isDark ? '<i data-lucide="moon"></i>' : '<i data-lucide="sun"></i>';
   lucide.createIcons();
 });
  
